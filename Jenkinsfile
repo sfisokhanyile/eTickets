@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    parameters{
+    /* parameters{
         choice(name:'VERSION', choices:['1.1.0', '1.2.0','1.3.0'], description: '')
         booleanParam(name:'executeTests',defaultValue:true,description:'')
     }
@@ -28,8 +28,18 @@ pipeline {
                 echo 'Deploying...'
                 echo "Deploying version ${params.VERSION}"
             }
-        }
-
-       
+        }       
+    } */
+stages {
+  stage('maven install') {
+    steps {
+      withMaven(globalMavenSettingsConfig: '', jdk: '', maven: '', mavenSettingsConfig: '', traceability: true) {
+    // some block
+}
     }
+  }
+
+}
+
+    
 }
